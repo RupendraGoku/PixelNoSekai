@@ -1,0 +1,146 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: rgb(85, 32, 146);
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 6%;
+  font-size: 1.8rem;
+  padding: 0 10px;
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 8px solid black;
+  width: 0;
+  animation: typing 3s steps(14) forwards, blinkCursor 0.7s step-end infinite;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes typing {
+  0% { width: 0 }
+  80% { width: 14ch }
+  100% { width: 0 }
+}
+
+@keyframes blinkCursor {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: rgb(255, 255, 255); }
+}
+
+form {
+  background-color: #434989;
+  margin: 5% auto;
+  height: 70px;
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px lightblue, 0 0 20px lightblue, 0 0 30px lightblue;
+}
+
+form input {
+  flex: 1;
+  background-color: transparent;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: 18px;
+  padding: 0 20px;
+}
+
+form button {
+  background: #ff3929;
+  font-size: 16px;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  color: #fff;
+  padding: 0 20px;
+}
+
+::placeholder {
+  color: #fff;
+  font-size: 16px;
+}
+
+#show-more-btn {
+  background-color: #ff3929;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto 100px;
+  display: none;
+}
+
+#search-result {
+  margin: 60px auto 50px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+#search-result img {
+  width: 100%;
+  height: 230px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.footer {
+  position: relative;
+  padding: 8px 12px;
+  font-size: 12px;
+  background-color: transparent;
+  color: #d3cece;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer p {
+  color: rgb(77, 77, 78);
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .footer {
+    font-size: 14px;
+    text-align: right;
+    padding: 10px 16px;
+  }
+
+  form button {
+    font-size: 18px;
+  }
+
+  ::placeholder {
+    font-size: 18px;
+  }
+}
