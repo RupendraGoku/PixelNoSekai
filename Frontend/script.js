@@ -43,7 +43,7 @@ async function searchImages() {
 
             // Use your backend download proxy with direct image URL (not the Unsplash download endpoint)
             const downloadButton = document.createElement("a");
-            downloadButton.href = `http://localhost:3000/download?url=${encodeURIComponent(result.urls.full)}`;
+            downloadButton.href = `https://pixelnosekai.onrender.com/download?url=${encodeURIComponent(result.urls.full)}`;
             downloadButton.textContent = "Download";
             downloadButton.style.display = "inline-block";
             downloadButton.style.marginTop = "8px";
