@@ -15,7 +15,6 @@ async function searchImages() {
         const response = await fetch(url);
         const data = await response.json();
 
-        // Check if results exist
         if (!data.results || !Array.isArray(data.results)) {
             console.error("Invalid data format received:", data);
             searchResult.innerHTML = `<p style="color:red;">No results found or an error occurred.</p>`;
@@ -27,17 +26,36 @@ async function searchImages() {
         }
 
         const results = data.results;
-console.log(results);
-        results.map((result) => {
-            
+        results.forEach((result) => {
+            const container = document.createElement("div");
+            container.style.marginBottom = "20px";
+
             const image = document.createElement("img");
             image.src = result.urls.small;
-            const imageLink = document.createElement("a");
-            imageLink.href = result.links.html;
-            imageLink.target = "_blank";
+            image.alt = result.alt_description || "Image";
+            image.style.display = "block";
+            image.style.maxWidth = "100%";
 
+            const imageLink = document.createElement("a");
+            imageLink.href = result.urls.full;
+            imageLink.target = "_blank";
             imageLink.appendChild(image);
-            searchResult.appendChild(imageLink);
+
+            // Use your backend download proxy with direct image URL (not the Unsplash download endpoint)
+            const downloadButton = document.createElement("a");
+            downloadButton.href = `http://localhost:3000/download?url=${encodeURIComponent(result.urls.full)}`;
+            downloadButton.textContent = "Download";
+            downloadButton.style.display = "inline-block";
+            downloadButton.style.marginTop = "8px";
+            downloadButton.style.padding = "6px 12px";
+            downloadButton.style.backgroundColor = "#007BFF";
+            downloadButton.style.color = "#fff";
+            downloadButton.style.textDecoration = "none";
+            downloadButton.style.borderRadius = "4px";
+
+            container.appendChild(imageLink);
+            container.appendChild(downloadButton);
+            searchResult.appendChild(container);
         });
 
         showMoreBtn.style.display = "block";
@@ -46,7 +64,6 @@ console.log(results);
         searchResult.innerHTML = `<p style="color:red;">Failed to fetch images.</p>`;
     }
 }
-
 
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
