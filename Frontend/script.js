@@ -9,7 +9,7 @@ let page = 1;
 async function searchImages() {
     keyword = searchBox.value;
 
-    const url = `http://localhost:3000/api/search?query=${encodeURIComponent(keyword)}&page=${page}&per_page=12`;
+    const url = `https://pixelnosekai.onrender.com/api/search?query=${encodeURIComponent(keyword)}&page=${page}&per_page=12`;
 
     try {
         const response = await fetch(url);
